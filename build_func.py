@@ -14,10 +14,10 @@ order = {
               ],
     "total": "",
     "total_after_dis":"",
-    "status": "close"
+    "status": "open"
 }
 
-orders =[]
+
 
   
 def add_item_for_order(products:list , order:dict ):
@@ -28,10 +28,10 @@ def add_item_for_order(products:list , order:dict ):
         item_id = int(input("choose id of item"))
         quantity = int(input("choose quantity"))
         if item_id == 0 and quantity == 0:
-            break
+            return order
         item = {"product_id":item_id, "quantity":quantity}
         order["items"].append(item)
-    return order
+        
         
         
     
@@ -53,13 +53,22 @@ def total_price_order(order,products):
     if total >= 1500:
          total_after_dis = total *(1- (15/100))
     order["total"] = total
-    order["total_after_dis"] =total_after_dis  
-    with open("orders.json", "a", encoding="utf-8") as file:
-        json.dump(order, file, indent=2, ensure_ascii=False)
+    order["total_after_dis"] =total_after_dis 
 
+
+    if order["id"] == 1:
+        with open("orders.json", "w", encoding="utf-8") as file:
+                 json.dump(order, file,indent=2, ensure_ascii=False)
+          
+    else:
+        with open("orders.json", "r", encoding="utf-8") as file:
+            loaded = [json.load(file)]  
+        loadded_plus = loaded.append(order) 
+        with open("orders.json", "w", encoding="utf-8") as file:
+            json.dump(loadded_plus, file,indent=2, ensure_ascii=False)
+          
     return f'total:{total} after dis:{total_after_dis} and update to ordders list'     
             
 
 
-    
-
+   

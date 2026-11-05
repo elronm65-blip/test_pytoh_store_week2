@@ -15,7 +15,7 @@ order = {
               ],
     "total": "",
     "total_after_dis":"",
-    "status": "close"
+    "status": "open"
 }
 
 orders =[]
@@ -38,17 +38,16 @@ while True:
         my_order = add_item_for_order(products, order )
         print(total_price_order(my_order,products ))
         print(my_order)
-        with open("orders.json", "r", encoding="utf-8") as file:
-            loaded = json.load(file) 
+        # with open("orders.json", "r", encoding="utf-8") as file:
+        #     loaded = json.load(file) 
          
              
         
              
-    # if choise == "2" :
-    #     with open("orders.json", "w", encoding="utf-8") as file:
-    #         json.dump(order, file, indent=2, ensure_ascii=False)
-    #     with open("orders.json", "r", encoding="utf-8") as file:
-    #         loaded = json.load(file)  
-    #     print(loaded["id"])      
-    #     print("oo")
+    if choise == "2" :
+        with open("orders.json", "r", encoding="utf-8") as file:
+            read_all = json.load(file)  
+        print("oo")
+        print(read_all)      
+       
     
