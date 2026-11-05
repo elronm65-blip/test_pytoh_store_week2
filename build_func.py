@@ -63,9 +63,9 @@ def total_price_order(order,products):
     else:
         with open("orders.json", "r", encoding="utf-8") as file:
             loaded = [json.load(file)]  
-        loadded_plus = loaded.append(order) 
+            loaded.append(order) 
         with open("orders.json", "w", encoding="utf-8") as file:
-            json.dump(loadded_plus, file,indent=2, ensure_ascii=False)
+            json.dump(loaded, file,indent=2, ensure_ascii=False)
           
     return f'total:{total} after dis:{total_after_dis} and update to ordders list'     
             
